@@ -10,6 +10,16 @@ spring:
   application:
     name: attendees
     
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    io:
+      pivotal:
+        pcf:
+          sme: DEBUG 
+
 # Using macros that are replaced by maven build
 info:
   build:

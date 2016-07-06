@@ -1,4 +1,4 @@
-package com.cglean.cloudnative.demo.ui.controller;
+package com.cglean.cloudnative.demo.client.ui.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

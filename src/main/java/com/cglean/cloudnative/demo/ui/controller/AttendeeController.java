@@ -22,11 +22,11 @@ import com.cglean.cloudnative.demo.client.model.Attendee;
 
 /**
  * AttendeeController
- * 
+ *
  * This is the MVC controller for the application. All UI HTTP requests get
  * here. We're using Thymeleaf as the template engine.
- * 
- * 
+ *
+ *
  * @author mborges
  *
  */
@@ -40,7 +40,7 @@ public class AttendeeController {
 
 	/**
 	 * INDEX
-	 * 
+	 *
 	 * @param model
 	 * @return
 	 * @throws Exception
@@ -52,15 +52,15 @@ public class AttendeeController {
 	}
 
 	/**
-	 * BASICS
-	 * 
+	 * Core
+	 *
 	 * Action to initiate shutdown of the system. In CF, the application
 	 * <em>should</em> restart. In other environments, the application runtime
 	 * will be shut down.
-	 * 
+	 *
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/basics", method = RequestMethod.GET)
+	@RequestMapping(value = "/core", method = RequestMethod.GET)
 	public String kill(@RequestParam(value = "doit", required = false) boolean doit, Model model) throws Exception {
 
 		addAppEnv(model);
@@ -82,14 +82,14 @@ public class AttendeeController {
 			new Thread(killTask).start();
 		}
 
-		return "basics";
+		return "core";
 
 	}
-	
+
 	@SuppressWarnings("resource")
 	@RequestMapping(value = "/ssh-file", method = RequestMethod.GET)
 	public String writeFile(Model model) throws Exception {
-		
+
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yy HH:mm:ss");
 		Date date = new Date();
 		File f = new File("ers-ssh-demo.log");
@@ -97,17 +97,17 @@ public class AttendeeController {
 		Writer w = new BufferedWriter(fw);
 		w.write(dateFormat.format(date) + "\n");
 		w.flush();
-		
+
 		model.addAttribute("ssh_file", f.getAbsoluteFile());
 		addAppEnv(model);
 
-		return "basics";
-		
+		return "core";
+
 	}
 
 	/**
 	 * SERVICES
-	 * 
+	 *
 	 * @param model
 	 *            The model for this action.
 	 * @return The path to the view.
@@ -116,14 +116,14 @@ public class AttendeeController {
 	public String attendees(Model model) throws Exception {
 
 		model.addAttribute("attendees", attendeeService.getAttendees());
-		
+
 		addAppEnv(model);
 		return "services";
 	}
-	
+
 	/**
 	 * SERVICES - clean DB
-	 * 
+	 *
 	 * @param model
 	 * @return
 	 * @throws Exception
@@ -134,22 +134,22 @@ public class AttendeeController {
 		attendeeService.deleteAll();
 		return attendees(model);
 	}
-	
+
 
 	/**
 	 * SERVICES - Add Attendee
-	 * 
+	 *
 	 * NOTE: this method chains (calls) the "attendees" method so it returns the
 	 * services template with the updated attendees list.
-	 * 
+	 *
 	 * TODO:
 	 * - Turn this this into REST call
-	 * 
+	 *
 	 * @param firstName
 	 * @param lastName
 	 * @param emailAddress
 	 * @param model
-	 * 
+	 *
 	 * @return
 	 * @throws Exception
 	 */
@@ -171,7 +171,7 @@ public class AttendeeController {
 
 	/**
 	 * BLUEGREEN
-	 * 
+	 *
 	 * @param model
 	 * @return
 	 * @throws Exception

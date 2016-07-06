@@ -1,3 +1,3 @@
-insert into attendee (id, first_name, last_name, address, city, state, zip_code, phone_number, email_address) values (5001, 'John', 'Smith', '123 Main St', 'Akron', 'OH', '44321', '330-123-4567', 'jsmith@gopivotal.com');
-insert into attendee (id, first_name, last_name, address, city, state, zip_code, phone_number, email_address) values (5002, 'Sally', 'Struthers', '321 Oak St', 'Akron', 'OH', '44321', '614-123-4567', 'sstruthers@gopivotal.com');
-insert into attendee (id, first_name, last_name, address, city, state, zip_code, phone_number, email_address) values (5003, 'Jane', 'Doe', '4444 High St', 'Columbus', 'OH', '43333', '330-123-4567', 'jdoe@gopivotal.com');
+insert into show (id, title, episodes, air_date) values (5001, 'Friends', '200', '2014-05-23');
+insert into show (id, title, episodes, air_date) values (5002, 'The Apprentice', '28', '1999-11-01');
+insert into show (id, title, episodes, air_date) values (5003, 'Shades of Grey', '14', '2001-4-01');

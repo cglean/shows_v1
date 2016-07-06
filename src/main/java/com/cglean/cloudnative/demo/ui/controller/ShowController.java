@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cglean.cloudnative.demo.client.model.Attendee;
+import com.cglean.cloudnative.demo.client.model.Show;
 
 /**
- * AttendeeController
+ * ShowController
  *
  * This is the MVC controller for the application. All UI HTTP requests get
  * here. We're using Thymeleaf as the template engine.
@@ -31,12 +31,12 @@ import com.cglean.cloudnative.demo.client.model.Attendee;
  *
  */
 @Controller
-public class AttendeeController {
+public class ShowController {
 
-	private Log log = LogFactory.getLog(AttendeeController.class);
+	private Log log = LogFactory.getLog(ShowController.class);
 
 	@Autowired
-	private AttendeeService attendeeService;
+	private ShowService showService;
 
 	/**
 	 * INDEX
@@ -113,9 +113,9 @@ public class AttendeeController {
 	 * @return The path to the view.
 	 */
 	@RequestMapping(value = "/services", method = RequestMethod.GET)
-	public String attendees(Model model) throws Exception {
+	public String shows(Model model) throws Exception {
 
-		model.addAttribute("attendees", attendeeService.getAttendees());
+		model.addAttribute("shows", showService.getShows());
 
 		addAppEnv(model);
 		return "services";
@@ -131,16 +131,16 @@ public class AttendeeController {
 	@RequestMapping(value = "/clean", method = RequestMethod.GET)
 	public String clean(Model model) throws Exception {
 
-		attendeeService.deleteAll();
-		return attendees(model);
+		showService.deleteAll();
+		return shows(model);
 	}
 
 
 	/**
-	 * SERVICES - Add Attendee
+	 * SERVICES - Add Show
 	 *
-	 * NOTE: this method chains (calls) the "attendees" method so it returns the
-	 * services template with the updated attendees list.
+	 * NOTE: this method chains (calls) the "shows" method so it returns the
+	 * services template with the updated show list.
 	 *
 	 * TODO:
 	 * - Turn this this into REST call
@@ -153,17 +153,17 @@ public class AttendeeController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/add-attendee", method = RequestMethod.POST)
-	public String addAttendee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
-			@RequestParam("emailAddress") String emailAddress, Model model) throws Exception {
+	@RequestMapping(value = "/add-show", method = RequestMethod.POST)
+	public String addShow(@RequestParam("title") String title, @RequestParam("episodes") String episodes,
+			@RequestParam("airDate") String airDate, Model model) throws Exception {
 
-		Attendee attendee = new Attendee();
-		attendee.setFirstName(firstName);
-		attendee.setLastName(lastName);
-		attendee.setEmailAddress(emailAddress);
+		Show show = new Show();
+		show.setTitle(title);
+		show.setEpisodes(episodes);
+		show.setAirDate(airDate);
 
-		attendeeService.add(attendee);
-		model.addAttribute("attendees", attendeeService.getAttendees());
+		showService.add(show);
+		model.addAttribute("shows", showService.getShows());
 
 		addAppEnv(model);
 		return "services";
@@ -194,7 +194,7 @@ public class AttendeeController {
 
 	private void addAppEnv(Model model) throws Exception {
 
-		Map<String, Object> modelMap = attendeeService.addAppEnv();
+		Map<String, Object> modelMap = showService.addAppEnv();
 		model.addAllAttributes(modelMap);
 	}
 

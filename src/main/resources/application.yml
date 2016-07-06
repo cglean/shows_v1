@@ -8,7 +8,7 @@ ribbon:
 
 spring:
   application:
-    name: attendees
+    name: shows
     
 logging:
   level:

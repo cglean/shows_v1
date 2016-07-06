@@ -48,32 +48,32 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div id="bluegreenBlock">
-							<h4>Attendees Database Tool</h4>
+							<h4>Shows</h4>
 
 							<div class="row">
-								<form id="attendee-form" class="form-inline"
-									action="add-attendee" method="post" role="form">
+								<form id="show-form" class="form-inline"
+									action="add-show" method="post" role="form">
 									<div class="col-xs-2">
 										<input type="text" class="form-control" required="required"
-											id="firstName" placeholder="First" name="firstName"></input>
+											id="title" placeholder="Title" name="title"></input>
 									</div>
 									<div class="col-xs-2">
-										<input type="text" class="form-control" required="required"
-											id="lastName" placeholder="Last" name="lastName"></input>
+										<input type="number" class="form-control" required="required"
+											id="episodes" placeholder="Episodes" name="episodes"></input>
 									</div>
 									<div class="col-xs-4">
-										<input type="email" class="form-control" required="required"
-											id="emailAddress" placeholder="Email" name="emailAddress"></input>
+										<input type="date" class="form-control" required="required"
+											id="airDate" placeholder="Air Date" name="airDate"></input>
 									</div>
 									<div class="col-xs-2">
 										<button type="submit" class="btn btn-primary ">Add
-											Attendee</button>
+											Show</button>
 									</div>
 								</form>
 							</div>
 
 						</div>
-						<table th:replace="fragments/list :: attendeeList">
+						<table th:replace="fragments/list :: shows">
 						</table>
 
 					</div>

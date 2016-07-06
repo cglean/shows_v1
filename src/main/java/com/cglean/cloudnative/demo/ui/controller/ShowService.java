@@ -14,80 +14,77 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cglean.cloudnative.demo.server.model.Attendee;
-import com.cglean.cloudnative.demo.server.repository.AttendeeRepository;
+import com.cglean.cloudnative.demo.server.model.Show;
+import com.cglean.cloudnative.demo.server.repository.ShowRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * AttendeeServices
- * 
+ * ShowServices
+ *
  * The purpose of this service class is to have a clear separation from the UI
  * to the client.
- * 
+ *
  * This is a RestController and all the UI stuff is done by the MVC controller.
- * 
- * @see AttendeeController
- * 
+ *
+ * @see ShowController
+ *
  * @author mborges
  *
  */
 @RestController
-public class AttendeeService {
+public class ShowService {
 
-	private Log log = LogFactory.getLog(AttendeeService.class);
-	
-	/// Polluting with server code (Attendee Model Object)
-	// http://blog.zenika.com/2012/06/15/hateoas-paging-with-spring-mvc-and-spring-data-jpa/
-	
+	private Log log = LogFactory.getLog(ShowService.class);
+
 	@Autowired
-	private AttendeeRepository attendeeRepository;
-	
-	void add(com.cglean.cloudnative.demo.client.model.Attendee a1) {
-		Attendee a2 = new Attendee();
-		a2.setFirstName(a1.getFirstName());
-		a2.setLastName(a1.getLastName());
-		a2.setEmailAddress(a1.getEmailAddress());
-		attendeeRepository.saveAndFlush(a2);
+	private ShowRepository showRepository;
+
+	void add(com.cglean.cloudnative.demo.client.model.Show a1) {
+		Show a2 = new Show();
+		a2.setTitle(a1.getTitle());
+		a2.setEpisodes(a1.getEpisodes());
+		a2.setAirDate(a1.getAirDate());
+		showRepository.saveAndFlush(a2);
 	}
-	
+
 	void deleteAll() {
-		attendeeRepository.deleteAll();
+		showRepository.deleteAll();
 	}
-	
+
 	// returning server object
-	Iterable<Attendee> getAttendees() {
-		return attendeeRepository.findAll();
+	Iterable<Show> getShows() {
+		return showRepository.findAll();
 	}
-	
+
 	// returning server object
-	Iterable<Attendee> searchName(String firstName) {
-		return attendeeRepository.findByFirstNameContainsIgnoreCase(firstName, new PageRequest(0,100));
+	Iterable<Show> searchName(String title) {
+		return showRepository.findByTitleIgnoreCase(title, new PageRequest(0,100));
 	}
-	
+
 
 	/**
 	 * bluegreenRequest - It really just returns the app name.
-	 * 
+	 *
 	 * The purpose is to show PCF load balancing between applications that share
 	 * routes
-	 * 
+	 *
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/bluegreen-check")
 	public String[] bluegreenRequest() throws Exception {
-		
+
 		List<String> values = new ArrayList<String>();
 		values.add((String) getVcapApplicationMap().getOrDefault("application_name", "no name environment variable"));
 		values.add(getVcapApplicationMap().getOrDefault("instance_index", "running locally").toString());
-		
+
 		return values.toArray(new String[0]);
 	}
 
 	/**
 	 * addAppEnv - Retrieve information about the application
-	 * 
+	 *
 	 * @return
 	 * @throws Exception
 	 */
@@ -121,7 +118,7 @@ public class AttendeeService {
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
         }
-		
+
 		return modelMap;
 	}
 

@@ -12,22 +12,17 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(exclude = "id")
-public class Attendee {
+public class Show {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable = false) 
-	private String firstName;
+	private String title;
 	
-	private String lastName;
-	private String address;
-	private String city;	
-	private String state;
-	private String zipCode;
-	private String phoneNumber;
-	private String emailAddress;
+	private String episodes;
+	private String airDate;
 		
 
 }

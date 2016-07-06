@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogExecution {
-	@AfterReturning("execution(* io..*(..))")
+	@AfterReturning("execution(* com.cglean..*(..))")
 	public void logServiceAccess(JoinPoint joinPoint) {
 		LogFactory.getLog(joinPoint.getTarget().getClass().getName()).debug("Execution completed for :" + joinPoint);
 	}

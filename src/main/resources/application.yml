@@ -2,6 +2,9 @@ spring.profiles.active: dev
 
 spring.jpa.hibernate.ddl-auto: update
 
+client:
+  latency: 0
+  
 ribbon:
   eureka:
    enabled: false

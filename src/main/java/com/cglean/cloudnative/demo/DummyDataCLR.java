@@ -1,14 +1,11 @@
-package io.pivotal.pcf.sme.ers;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+package com.cglean.cloudnative.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import io.pivotal.pcf.sme.ers.server.repo.AttendeeRepository;
+import com.cglean.cloudnative.demo.server.repository.AttendeeRepository;
 
 @Component
 public class DummyDataCLR  implements CommandLineRunner {

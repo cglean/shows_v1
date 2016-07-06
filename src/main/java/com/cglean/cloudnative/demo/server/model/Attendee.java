@@ -1,4 +1,4 @@
-package io.pivotal.pcf.sme.ers.server.model;
+package com.cglean.cloudnative.demo.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

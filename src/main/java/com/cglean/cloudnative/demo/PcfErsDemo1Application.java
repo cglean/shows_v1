@@ -1,4 +1,4 @@
-package io.pivotal.pcf.sme.ers;
+package com.cglean.cloudnative.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

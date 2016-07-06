@@ -1,4 +1,4 @@
-package com.gopivotal.pcf.sme.ers.server;
+package com.cglean.cloudnative.demo.server;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,9 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import io.pivotal.pcf.sme.ers.PcfErsDemo1Application;
-import io.pivotal.pcf.sme.ers.server.model.Attendee;
-import io.pivotal.pcf.sme.ers.server.repo.AttendeeRepository;
+import com.cglean.cloudnative.demo.PcfErsDemo1Application;
+import com.cglean.cloudnative.demo.server.model.Attendee;
+import com.cglean.cloudnative.demo.server.repository.AttendeeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;

@@ -15,10 +15,10 @@ logging:
     org:
       springframework:
         web: DEBUG
-    io:
-      pivotal:
-        pcf:
-          sme: DEBUG 
+    com:
+      cglean:
+        cloudnative:
+          demo: DEBUG 
 
 # Using macros that are replaced by maven build
 info:

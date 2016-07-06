@@ -1,4 +1,4 @@
-package io.pivotal.pcf.sme.ers.client.ui.controller;
+package com.cglean.cloudnative.demo.ui.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -14,10 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cglean.cloudnative.demo.server.model.Attendee;
+import com.cglean.cloudnative.demo.server.repository.AttendeeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.pivotal.pcf.sme.ers.server.model.Attendee;
-import io.pivotal.pcf.sme.ers.server.repo.AttendeeRepository;
 
 /**
  * AttendeeServices
@@ -43,7 +42,7 @@ public class AttendeeService {
 	@Autowired
 	private AttendeeRepository attendeeRepository;
 	
-	void add(io.pivotal.pcf.sme.ers.client.model.Attendee a1) {
+	void add(com.cglean.cloudnative.demo.client.model.Attendee a1) {
 		Attendee a2 = new Attendee();
 		a2.setFirstName(a1.getFirstName());
 		a2.setLastName(a1.getLastName());

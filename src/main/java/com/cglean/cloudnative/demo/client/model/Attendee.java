@@ -1,4 +1,4 @@
-package io.pivotal.pcf.sme.ers.client.model;
+package com.cglean.cloudnative.demo.client.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,4 +1,4 @@
-package io.pivotal.pcf.sme.ers.client.ui.controller;
+package com.cglean.cloudnative.demo.ui.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import io.pivotal.pcf.sme.ers.client.model.Attendee;
+import com.cglean.cloudnative.demo.client.model.Attendee;
 
 /**
  * AttendeeController

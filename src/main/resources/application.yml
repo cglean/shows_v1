@@ -2,6 +2,7 @@ spring.profiles.active: dev
 
 spring.jpa.hibernate.ddl-auto: update
 
+# Introduce latency in Controllers by adding a value greater than zero.  Latency is in seconds.
 client:
   latency: 0
   
